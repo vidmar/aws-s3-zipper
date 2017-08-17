@@ -234,7 +234,7 @@ S3Zipper.prototype = {
     }
 
 
-    , uploadLocalFileToS3: function (localFileName, s3ZipFileName, callback) {
+    , uploadLocalFileToS3: function (localFileName, s3leleName, callback) {
         console.log('uploading ', s3ZipFileName, '...');
         var readStream = fs.createReadStream(localFileName);//tempFile
 
@@ -285,7 +285,7 @@ S3Zipper.prototype = {
         }
 
         var t = this;
-        params.zipFileName = '__' + Date.now() + '.zip';
+        params.zipFileName = '/tmp/__' + Date.now() + '.zip';
 
         if (params.s3ZipFileName.indexOf('/') < 0)
             params.s3ZipFileName = params.s3FolderName + "/" + params.s3ZipFileName;
