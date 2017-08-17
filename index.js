@@ -189,7 +189,7 @@ S3Zipper.prototype = {
                 console.error(err);
             else {
                 var files = clearedFiles.files;
-                console.log("files", files);
+                //console.log("files", files);
                 async.map(files, function (f, callback) {
                     t.s3bucket.getObject({Bucket: t.awsConfig.bucket, Key: f.Key}, function (err, data) {
                         if (err)
@@ -203,7 +203,7 @@ S3Zipper.prototype = {
                                 return;
                             }
                             else {
-                                console.log('zipping ', name, '...');
+                                //console.log('zipping ', name, '...');
 
                                 zip.append(data.Body, {name: name});
                                 callback(null, f);
@@ -234,7 +234,7 @@ S3Zipper.prototype = {
     }
 
 
-    , uploadLocalFileToS3: function (localFileName, s3leleName, callback) {
+    , uploadLocalFileToS3: function (localFileName, s3ZipFileName, callback) {
         console.log('uploading ', s3ZipFileName, '...');
         var readStream = fs.createReadStream(localFileName);//tempFile
 
